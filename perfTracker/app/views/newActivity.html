@@ -1,0 +1,45 @@
+﻿<script type="text/ng-template" id="newActivity.html">
+    <div style="padding: 20px">
+        <div class="text-center">
+            <!-- Split button -->
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-default">Which value did you meet today?</button>
+                <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle>
+                    <span class="caret"></span>
+                    <span class="sr-only">Split button!</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-repeat="value in vm.strategyValues" ng-click="vm.newActivity.strategyValue = value.title">
+                        <span ng-class="vm.labelStyles[value.type]"
+                              style="float: left; width: 50px;">{{value.type}}</span>
+                        <span style="padding-left: 5px; padding-right: 5px;">{{value.title}}</span>
+                    </li>
+                </ul>
+            </div>
+            <br />
+            <div ng-show="vm.newActivity.strategyValue != undefined;">
+                <label for="strategyValue" style="margin-top: 15px;">Value: </label>
+                <span>{{vm.newActivity.strategyValue}}</span>
+            </div>
+
+        </div>
+        <div class="form-group" name="activityForm" id="activityForm">
+            <!-- Description -->
+            <div class="form-group">
+                <label for=" description" style="margin-top: 15px;">
+                    Description
+                </label>
+                <textarea class="form-control" name="description" ng-model="vm.newActivity.description" style="max-width: 100%" rows="5"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-group row">
+                <div class="col-xs-6 col-xs-offset-3" style="margin-top: 15px;">
+                    <a class="btn btn-block btn-success" ng-click="vm.submitActivity()">
+                        Submit  <span class=" glyphicon glyphicon-ok" id="submitButton"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
